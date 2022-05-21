@@ -19,17 +19,17 @@ public class PokemonRemote {
         //add doOnError
     }
 
-    public Pokemon getByName(String name) {
+    public Pokemon getById(String id) {
         return pokemonWebClient.get()
-                .uri("pokemon/" + name)
+                .uri("pokemon/" + id)
                 .retrieve()
                 .bodyToMono(Pokemon.class)
                 .block();
     }
 
-    public Pokemon getById(String id) {
+    public Pokemon getByName(String name) {
         return pokemonWebClient.get()
-                .uri("pokemon/" + id)
+                .uri("pokemon/" + name)
                 .retrieve()
                 .bodyToMono(Pokemon.class)
                 .block();

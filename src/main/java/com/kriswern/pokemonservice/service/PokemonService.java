@@ -4,6 +4,7 @@ import com.kriswern.pokemonservice.model.Pokemon;
 import com.kriswern.pokemonservice.model.PokemonResponse;
 import com.kriswern.pokemonservice.remote.PokemonRemote;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class PokemonService {
 
     private final PokemonRemote pokemonRemote;
 
+    @Cacheable(value="pokemonList")
     public PokemonResponse getAll() {
         List<Pokemon> pokemon = pokemonRemote.getAll()
                 .getResults()
